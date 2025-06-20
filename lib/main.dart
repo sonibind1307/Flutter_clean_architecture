@@ -1,3 +1,4 @@
+import 'package:animation/stream/broadcast_stream.dart';
 import 'package:animation/stream/stream_screen.dart';
 import 'package:flutter/material.dart';
 import 'animation/curve_tween_animation.dart';
@@ -38,6 +39,15 @@ class _HomePage extends State<HomePage> {
             onTap: () {
               Navigator.push(
                 context,
+                MaterialPageRoute(builder: (_) => const BroadStreamScreen()),
+              );
+            },
+            child: ListTile(title: Text("BroadCast Stream")),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
                 MaterialPageRoute(builder: (_) => const HomeScreen()),
               );
             },
@@ -52,8 +62,6 @@ class _HomePage extends State<HomePage> {
             },
             child: ListTile(title: Text("DisdependenciesChange")),
           ),
-
-
 
           ElevatedButton(
             onPressed: () {
