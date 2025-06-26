@@ -1,14 +1,24 @@
 import 'package:animation/stream/broadcast_stream.dart';
 import 'package:animation/stream/stream_screen.dart';
+import 'package:animation/testfile/unit_test_screen.dart';
 import 'package:flutter/material.dart';
 import 'animation/curve_tween_animation.dart';
 import 'animation/hero_animated.dart';
 import 'animation/main_animation.dart';
-import 'didupdate_widget.dart';
-import 'dispose_widget.dart';
-import 'theme_toggle_screen.dart';
+import 'lifeCycle/didupdate_widget.dart';
+import 'lifeCycle/dispose_widget.dart';
+import 'lifeCycle/theme_toggle_screen.dart';
+import 'package:test/test.dart';
 
 void main() {
+
+  test("description", (){
+    Counter counter = Counter();
+    counter.increment();
+    expect(counter.value, 1);
+    counter.increment();
+    expect(counter.value, 1 );
+  });
   runApp(MaterialApp(home: HomePage()));
 }
 
@@ -26,6 +36,15 @@ class _HomePage extends State<HomePage> {
       appBar: AppBar(title: const Text('Mail Screen')),
       body: ListView(
         children: [
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const UnitTestScreen()),
+              );
+            },
+            child: ListTile(title: Text("Unit Test")),
+          ),
           InkWell(
             onTap: () {
               Navigator.push(
