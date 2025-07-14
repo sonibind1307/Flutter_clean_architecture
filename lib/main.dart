@@ -1,24 +1,52 @@
 import 'package:animation/stream/broadcast_stream.dart';
 import 'package:animation/stream/stream_screen.dart';
 import 'package:animation/testfile/unit_test_screen.dart';
+import 'package:animation/testfile/widget_test_screen.dart';
 import 'package:flutter/material.dart';
+import 'animation/animation_with_mixin.dart';
 import 'animation/curve_tween_animation.dart';
 import 'animation/hero_animated.dart';
 import 'animation/main_animation.dart';
+import 'bloc/user_screen.dart';
+import 'isolate/isolate_screen.dart';
 import 'lifeCycle/didupdate_widget.dart';
 import 'lifeCycle/dispose_widget.dart';
 import 'lifeCycle/theme_toggle_screen.dart';
-import 'package:test/test.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+import 'method_channel/method_channel.dart';
 
 void main() {
+  ///test unit test
+  // test("description", () {
+  //   Counter counter = Counter();
+  //   counter.increment();
+  //   expect(counter.value, 1);
+  //   counter.increment();
+  //   expect(counter.value, 1);
+  // });
 
-  test("description", (){
-    Counter counter = Counter();
-    counter.increment();
-    expect(counter.value, 1);
-    counter.increment();
-    expect(counter.value, 1 );
-  });
+  /* ///widget test
+  testWidgets('Counter increments when button is pressed', (
+    WidgetTester tester,
+  ) async {
+    // Arrange: Load the widget into the test environment
+    await tester.pumpWidget(MaterialApp(home: Scaffold(body: CounterWidget())));
+
+    // Assert: Check initial state
+    expect(find.text('Count: 0'), findsOneWidget);
+    expect(find.text('Count: 1'), findsNothing);
+
+    // Act: Tap the increment button
+    await tester.tap(find.byKey(Key('incrementButton')));
+    await tester.pump(); // Rebuild the widget
+    await tester.tap(find.byKey(Key('incrementButton')));
+    await tester.pump();
+    // Assert: Should show incremented count
+    expect(find.text('Count: 2'), findsOneWidget);
+    expect(find.text('Count: 0'), findsNothing);
+  });*/
+
   runApp(MaterialApp(home: HomePage()));
 }
 
@@ -33,9 +61,48 @@ class _HomePage extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Mail Screen')),
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: const Text('Mail Screen'),
+      ),
       body: ListView(
         children: [
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => MultiAnimationExample()),
+              );
+            },
+            child: ListTile(title: Text("Mixin Animation")),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => MethodChannelScreen()),
+              );
+            },
+            child: ListTile(title: Text("Method Channel")),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const IsolateScreen()),
+              );
+            },
+            child: ListTile(title: Text("Isolate")),
+          ),
+          InkWell(
+            onTap: () {
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (_) => const CounterWidget()),
+              // );
+            },
+            child: ListTile(title: Text("Widget Test")),
+          ),
           InkWell(
             onTap: () {
               Navigator.push(
@@ -82,42 +149,62 @@ class _HomePage extends State<HomePage> {
             child: ListTile(title: Text("DisdependenciesChange")),
           ),
 
-          ElevatedButton(
-            onPressed: () {
+          InkWell(
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (_) => const ParentWidget()),
               );
             },
-            child: const Text('didUpdateWidget'),
+            child: ListTile(title: Text("didUpdateWidget")),
           ),
-          ElevatedButton(
-            onPressed: () {
+
+          InkWell(
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (_) => const AnimationMainApp()),
               );
             },
-            child: const Text('animation'),
+            child: ListTile(title: const Text('animation')),
           ),
 
-          ElevatedButton(
-            onPressed: () {
+          InkWell(
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (_) => const TweenCurvedAnimation()),
               );
             },
-            child: const Text('tween'),
+            child: ListTile(title: const Text('tween')),
           ),
-          ElevatedButton(
-            onPressed: () {
+
+          InkWell(
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (_) => const HeroFirstPage()),
               );
             },
-            child: const Text('hero'),
+            child: ListTile(title: const Text('hero')),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const HeroFirstPage()),
+              );
+            },
+            child: ListTile(title: const Text('Ticker Provider')),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const UserScreenList()),
+              );
+            },
+            child: ListTile(title: const Text('Bloc List')),
           ),
         ],
       ),
