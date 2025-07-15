@@ -8,6 +8,9 @@ import 'animation/curve_tween_animation.dart';
 import 'animation/hero_animated.dart';
 import 'animation/main_animation.dart';
 import 'bloc/user_screen.dart';
+import 'features/app/app.dart';
+import 'features/booking/presentation/booking_screen.dart';
+import 'features/report/presentation/report_screen.dart';
 import 'isolate/isolate_screen.dart';
 import 'lifeCycle/didupdate_widget.dart';
 import 'lifeCycle/dispose_widget.dart';
@@ -15,6 +18,7 @@ import 'lifeCycle/theme_toggle_screen.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'method_channel/method_channel.dart';
+
 
 void main() {
   ///test unit test
@@ -47,7 +51,9 @@ void main() {
     expect(find.text('Count: 0'), findsNothing);
   });*/
 
-  runApp(MaterialApp(home: HomePage()));
+  // runApp(MaterialApp(home: CreateBookingPage()));
+
+  runApp(const MyApp());
 }
 
 class HomePage extends StatefulWidget {
@@ -212,14 +218,14 @@ class _HomePage extends State<HomePage> {
   }
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class MyApp1 extends StatefulWidget {
+  const MyApp1({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<MyApp1> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp1> {
   ThemeMode _themeMode = ThemeMode.system;
 
   void toggleTheme(bool isDark) {

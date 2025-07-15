@@ -54,6 +54,7 @@ class _ChildWidgetState extends State<ChildWidget> {
 
   @override
   Widget build(BuildContext context) {
+    print("build method");
     return Center(
       child: Text(
         'Hello, ${widget.name}!',

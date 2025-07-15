@@ -3,7 +3,7 @@ import '../model/user_model.dart';
 abstract class UserEvent {}
 
 class SubmitUsers extends UserEvent {
-  final User user;
+  final PatientModel user;
 
   SubmitUsers(this.user);
 }

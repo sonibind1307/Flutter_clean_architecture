@@ -1,121 +1,84 @@
-class User {
+class PatientModel {
   int? id;
   String? name;
-  String? username;
+  String? lastName;
+  String? dob;
+  int? age;
+  String? gender;
+  String? createdAt;
+  String? mobile;
   String? email;
-  Address? address;
-  String? phone;
-  String? website;
-  Company? company;
+  String? refereByDoctor;
+  String? consultant;
+  int? totalAmount;
+  int? paidAmount;
+  int? balanceAmount;
+  String? discount;
+  int? otherAmount;
+  Null? remark;
+  String? testList;
 
-  User(
+  PatientModel(
       {this.id,
         this.name,
-        this.username,
+        this.lastName,
+        this.dob,
+        this.age,
+        this.gender,
+        this.createdAt,
+        this.mobile,
         this.email,
-        this.address,
-        this.phone,
-        this.website,
-        this.company});
+        this.refereByDoctor,
+        this.consultant,
+        this.totalAmount,
+        this.paidAmount,
+        this.balanceAmount,
+        this.discount,
+        this.otherAmount,
+        this.remark,
+        this.testList});
 
-  User.fromJson(Map<String, dynamic> json) {
+  PatientModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-    username = json['username'];
+    lastName = json['last_name'];
+    dob = json['dob'];
+    age = json['age'];
+    gender = json['gender'];
+    createdAt = json['created_at'];
+    mobile = json['mobile'];
     email = json['email'];
-    address =
-    json['address'] != null ? new Address.fromJson(json['address']) : null;
-    phone = json['phone'];
-    website = json['website'];
-    company =
-    json['company'] != null ? new Company.fromJson(json['company']) : null;
+    refereByDoctor = json['refere_by_doctor'];
+    consultant = json['consultant'];
+    totalAmount = json['total_amount'];
+    paidAmount = json['paid_amount'];
+    balanceAmount = json['balance_amount'];
+    discount = json['discount'];
+    otherAmount = json['other_amount'];
+    remark = json['remark'];
+    testList = json['test_list'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['name'] = this.name;
-    data['username'] = this.username;
+    data['last_name'] = this.lastName;
+    data['dob'] = this.dob;
+    data['age'] = this.age;
+    data['gender'] = this.gender;
+    data['created_at'] = this.createdAt;
+    data['mobile'] = this.mobile;
     data['email'] = this.email;
-    if (this.address != null) {
-      data['address'] = this.address!.toJson();
-    }
-    data['phone'] = this.phone;
-    data['website'] = this.website;
-    if (this.company != null) {
-      data['company'] = this.company!.toJson();
-    }
-    return data;
-  }
-}
-
-class Address {
-  String? street;
-  String? suite;
-  String? city;
-  String? zipcode;
-  Geo? geo;
-
-  Address({this.street, this.suite, this.city, this.zipcode, this.geo});
-
-  Address.fromJson(Map<String, dynamic> json) {
-    street = json['street'];
-    suite = json['suite'];
-    city = json['city'];
-    zipcode = json['zipcode'];
-    geo = json['geo'] != null ? new Geo.fromJson(json['geo']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['street'] = this.street;
-    data['suite'] = this.suite;
-    data['city'] = this.city;
-    data['zipcode'] = this.zipcode;
-    if (this.geo != null) {
-      data['geo'] = this.geo!.toJson();
-    }
-    return data;
-  }
-}
-
-class Geo {
-  String? lat;
-  String? lng;
-
-  Geo({this.lat, this.lng});
-
-  Geo.fromJson(Map<String, dynamic> json) {
-    lat = json['lat'];
-    lng = json['lng'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['lat'] = this.lat;
-    data['lng'] = this.lng;
-    return data;
-  }
-}
-
-class Company {
-  String? name;
-  String? catchPhrase;
-  String? bs;
-
-  Company({this.name, this.catchPhrase, this.bs});
-
-  Company.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    catchPhrase = json['catchPhrase'];
-    bs = json['bs'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['catchPhrase'] = this.catchPhrase;
-    data['bs'] = this.bs;
+    data['refere_by_doctor'] = this.refereByDoctor;
+    data['consultant'] = this.consultant;
+    data['total_amount'] = this.totalAmount;
+    data['paid_amount'] = this.paidAmount;
+    data['balance_amount'] = this.balanceAmount;
+    data['discount'] = this.discount;
+    data['other_amount'] = this.otherAmount;
+    data['remark'] = this.remark;
+    data['test_list'] = this.testList;
     return data;
   }
 }

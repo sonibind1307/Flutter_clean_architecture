@@ -52,7 +52,7 @@ class UserPostScreen extends StatelessWidget {
                       }
                       return ElevatedButton(
                         onPressed: () {
-                          final user = User(
+                          final user = PatientModel(
                             name: nameController.text,
                             email: emailController.text,
                           );

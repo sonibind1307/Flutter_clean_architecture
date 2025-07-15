@@ -9,7 +9,7 @@ class UserInitial extends UserState {}
 class UserLoading extends UserState {}
 
 class UserLoaded extends UserState {
-  final List<User> users;
+  final List<PatientModel> users;
 
   UserLoaded(this.users);
 }
