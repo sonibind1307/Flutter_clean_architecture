@@ -12,6 +12,7 @@ class Sidebar extends StatelessWidget {
       SidebarItem(Icons.book, 'Bookings', '/bookings'),
       SidebarItem(Icons.insert_chart, 'Reports', '/reports'),
       SidebarItem(Icons.add, 'Create Booking', '/create-booking'),
+      SidebarItem(Icons.add, 'Add Patient', '/register-patient'),
     ];
 
     return Container(
@@ -34,7 +35,6 @@ class Sidebar extends StatelessWidget {
               itemBuilder: (_, index) {
                 final item = items[index];
                 final selected = currentRoute == item.route;
-
                 return Container(
                   color: selected ? Colors.orange : Colors.transparent,
                   child: ListTile(

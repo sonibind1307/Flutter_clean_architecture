@@ -9,7 +9,6 @@ import 'animation/hero_animated.dart';
 import 'animation/main_animation.dart';
 import 'bloc/user_screen.dart';
 import 'features/app/app.dart';
-import 'features/booking/presentation/booking_screen.dart';
 import 'features/report/presentation/report_screen.dart';
 import 'isolate/isolate_screen.dart';
 import 'lifeCycle/didupdate_widget.dart';
@@ -52,6 +51,7 @@ void main() {
   });*/
 
   // runApp(MaterialApp(home: CreateBookingPage()));
+  // runApp(MaterialApp(home: HomePage()));
 
   runApp(const MyApp());
 }
