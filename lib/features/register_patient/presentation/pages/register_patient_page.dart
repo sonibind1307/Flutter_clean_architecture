@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class RegisterPatientPage extends StatelessWidget {
   const RegisterPatientPage({super.key});
@@ -52,17 +53,22 @@ class RegisterPatientPage extends StatelessWidget {
                         _buildTextField('Email', ''),
                         _buildDropdown('Referred by Doctor', [
                           'Doctor A',
-                          'Doctor B'
+                          'Doctor B',
                         ]),
                         _buildDropdown('Consultant', [
                           'Consultant X',
-                          'Consultant Y'
+                          'Consultant Y',
                         ]),
                         _buildDropdown('Test List', [
                           'Test 1',
                           'Test 2',
-                          'Test 3'
+                          'Test 3',
                         ]),
+                        _buildTextField(
+                          'Reference Id',
+                          '',
+                          inputFormatters: [AlphanumericUpperCaseTextFormatter()],
+                        ),
 
                         _buildTextField('Total Amount', ''),
                         _buildTextField('Paid Amount', ''),
@@ -109,11 +115,16 @@ class RegisterPatientPage extends StatelessWidget {
     );
   }
 
-  Widget _buildTextField(String label, String initialValue) {
+  Widget _buildTextField(
+    String label,
+    String initialValue, {
+    List<TextInputFormatter>? inputFormatters,
+  }) {
     return SizedBox(
       width: 250,
       child: TextField(
         controller: TextEditingController(text: initialValue),
+        inputFormatters: inputFormatters,
         decoration: InputDecoration(
           labelText: label,
           border: const OutlineInputBorder(),
@@ -130,9 +141,10 @@ class RegisterPatientPage extends StatelessWidget {
           labelText: label,
           border: const OutlineInputBorder(),
         ),
-        items: items
-            .map((item) => DropdownMenuItem(value: item, child: Text(item)))
-            .toList(),
+        items:
+            items
+                .map((item) => DropdownMenuItem(value: item, child: Text(item)))
+                .toList(),
         onChanged: (value) {},
       ),
     );
@@ -149,6 +161,21 @@ class RegisterPatientPage extends StatelessWidget {
           border: const OutlineInputBorder(),
         ),
       ),
+    );
+  }
+}
+
+class AlphanumericUpperCaseTextFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    final filtered = newValue.text.replaceAll(RegExp(r'[^a-zA-Z0-9]'), '');
+    final uppercased = filtered.toUpperCase();
+    return newValue.copyWith(
+      text: uppercased,
+      selection: TextSelection.collapsed(offset: uppercased.length),
     );
   }
 }
