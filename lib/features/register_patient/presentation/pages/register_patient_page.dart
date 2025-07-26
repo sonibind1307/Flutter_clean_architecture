@@ -70,15 +70,41 @@ class RegisterPatientPage extends StatelessWidget {
                           inputFormatters: [AlphanumericUpperCaseTextFormatter()],
                         ),
 
-                        _buildTextField('Total Amount', ''),
-                        _buildTextField('Paid Amount', ''),
-                        _buildTextField('Balance Amount (Auto)', ''),
-                        _buildTextField('Discount (INR or %)', ''),
-                        _buildTextField('Other Amount', ''),
-                        _buildTextField('Remark', ''),
+                        // _buildTextField('Total Amount', ''),
+                        // _buildTextField('Paid Amount', ''),
+                        // _buildTextField('Balance Amount (Auto)', ''),
+                        // _buildTextField('Discount (INR or %)', ''),
+                        // _buildTextField('Other Amount', ''),
+                        // _buildTextField('Remark', ''),
                       ],
                     ),
-
+                    const SizedBox(height: 10),
+                    const Text(
+                      'Amount',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.orange,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Expanded(child: _buildAmountField('Total Amount')),
+                        const SizedBox(width: 10),
+                        Expanded(child: _buildAmountField('Paid Amount')),
+                        const SizedBox(width: 10),
+                        Expanded(child: _buildAmountField('Balance Amount (Auto)')),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: _buildAmountField('Other Amount'),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: _buildAmountField('Remark'),
+                        ),
+                      ],
+                    ),
                     const SizedBox(height: 30),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -111,6 +137,16 @@ class RegisterPatientPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildAmountField(String label) {
+    return TextField(
+      decoration: InputDecoration(
+        prefixText: '₹ ',
+        labelText: label,
+        border: const OutlineInputBorder(),
       ),
     );
   }
